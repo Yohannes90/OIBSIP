@@ -8,10 +8,10 @@ public class NumberGuessingGame {
     void gameWelcome() {
         System.out.println("\n=================================================");
         System.out.println("Welcome to our Number Guessing Game");
-        System.out.println("=================================================");
-        System.out.println("Please choose difficulty level: \n \t 1 for Easy \n \t 2 for Medium \n \t 3 for Hard  \n \t 0 for QUITING");
+        System.out.println("Number Guessing Game Menu: \n \t 1 ... Easy Mode\n \t 2 ... Medium Mode \n \t 3 ... Hard Mode \n \t 0 ... QUITING");
         System.out.print("Your choice: ");
         int level = scan.nextInt();
+        System.out.println("=================================================");
         gameStart(level);
         System.out.println("=================================================\n");
     }
@@ -19,20 +19,20 @@ public class NumberGuessingGame {
     void gameStart(int level) {
         switch (level) {
             case 1:
-                System.out.println("Easy Level \n Guess a number between 0 and 10, you have 3 guesses.");
+                System.out.println("Easy Mode \nGuess a number between 0 and 10, you have 3 guesses.");
                 gamePlay(3, 11);
                 break;
             case 2:
-                System.out.println("Medium Level  \n Guess a number between 0 and 40, you have 5 guesses.");
+                System.out.println("Medium Mode \nGuess a number between 0 and 50, you have 5 guesses.");
                 gamePlay(5, 51);
                 break;
             case 3:
-                System.out.println("Hard Level  \n Guess a number between 0 and 100, you have 7 guesses.");
-                gamePlay(5, 101);
+                System.out.println("Hard Mode \nGuess a number between 0 and 100, you have 7 guesses.");
+                gamePlay(7, 101);
                 break;
-            case 4:
+            case 0:
                 System.out.println("GoodBye, Hope you play again soon");
-                break;
+                System.exit(0);
             default:
                 System.out.println("Invalid input");
                 gameWelcome();
@@ -43,23 +43,24 @@ public class NumberGuessingGame {
     void gamePlay(int guesses, int maxNum) {
         Random random = new Random();
         int num = random.nextInt(maxNum);
+
         System.out.print("Input your guess: ");
-        for (int i = 1; i < guesses; i++) {
+        for (int i = 1; i <= guesses; i++) {
             int guess = scan.nextInt();
-            if (guess == num) {
-                System.out.print("YOU WON!! :) :) Your guess is correct.");
+            if (guess < num) {
+                System.out.println("Guess Higher." + " Previous guess: " + guess);
+            } else if (guess > num) {
+                System.out.println("Guess Lower." + " Previous guess: " + guess);
             }
-            System.out.println("Your guess was not correct, try again you have " + (guesses - i) + " Guesses left");
+            else if (guess == num) {
+                System.out.print("YOU WON!! :) :) Your guess " + guess + " was correct.");
+                gameWelcome();
+                break;
+            }
+            System.out.print("Try again you have " + (guesses - i) + " Guesses left: ");
         }
         System.out.println("You Lost! The correct number was " + num + "! Good luck next time.");
         gameWelcome();
-    }
-
-
-    public static void main(String[] args) {
-        NumberGuessingGame game1 = new NumberGuessingGame();
-        game1.gameWelcome();
-
     }
 
 }
