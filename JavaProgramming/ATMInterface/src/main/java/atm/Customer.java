@@ -1,11 +1,13 @@
 package src.main.java.atm;
 
+
 public class Customer {
     private int id;
     private String name;
     private String email;
     private String password;
     private int accountNo;
+    private boolean authenticated;
 
     public Customer(int id, String name, String email, String password, int accountNo) {
         setId(id);
@@ -13,6 +15,7 @@ public class Customer {
         setEmail(email);
         setPassword(password);
         setAccountNo(accountNo);
+        setAuthenticated(false);
     }
 
     public int getId() {
@@ -53,5 +56,13 @@ public class Customer {
 
     public void setAccountNo(int accountNo) {
         this.accountNo = accountNo;
+    }
+
+    public boolean isAuthenticated() {
+        return authenticated;
+    }
+
+    public void setAuthenticated(boolean authenticated) {
+        this.authenticated = authenticated;
     }
 }
