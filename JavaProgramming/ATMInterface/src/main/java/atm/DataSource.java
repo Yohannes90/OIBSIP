@@ -59,6 +59,19 @@ public class DataSource {
         return account;
     }
 
+    public static void updateAccount(int accountId, double balance) {
+        String sql = "UPDATE accounts SET balance = ? WHERE id = ?";
+        try (Connection connection = connect();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setDouble(1, balance);
+            statement.setInt(2, accountId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error in UpdateAccount");
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
 
         // Testing getCustomer
@@ -76,6 +89,18 @@ public class DataSource {
         } else {
             System.out.println("Error...Got Wrong Account");
         }
+
+        // Testing updateAccount
+        Account account1 = getAccount(11963);
+        double balance = account1.getBalance();
+        updateAccount(11963, balance - 1500);
+        if (getAccount(11963).getBalance() == balance - 1500) {
+            System.out.println("Successfully Updated Account");
+            updateAccount(11963, balance);
+        } else {
+            System.out.println("Error...Updating Account");
+        }
+
 
     }
 }
