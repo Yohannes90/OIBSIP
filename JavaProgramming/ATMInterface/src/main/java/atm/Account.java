@@ -1,5 +1,9 @@
 package src.main.java.atm;
 
+import src.main.java.atm.exceptions.AmountException;
+import static src.main.java.atm.DataSource.updateAccountBalance;
+
+
 public class Account {
     private int id;
     private String type;
@@ -34,4 +38,27 @@ public class Account {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    public void deposit(double amount) throws AmountException{
+        if (amount < 50) {
+            throw new AmountException("Minimum deposit is 50");
+        } else {
+            double newBalance = balance + amount;
+            setBalance(newBalance);
+            updateAccountBalance(id, newBalance);
+        }
+    }
+
+    public void withdraw(double amount) throws AmountException {
+        if (amount < 10) {
+            throw new AmountException("The minimum withdraw amount is 10.00");
+        } else if (amount > balance) {
+            throw new AmountException("You do not have sufficient funds for this withdraw!");
+        } else {
+            double newBalance = balance - amount;
+            setBalance(newBalance);
+            updateAccountBalance(id, newBalance);
+        }
+    }
+
 }
