@@ -29,9 +29,9 @@ public class Menu {
 
         while (selection != 5 && customer.isAuthenticated()) {
             System.out.println("---------------------------------------");
-            System.out.println("\t1: Check balance\n\t2: Deposit\n\t3: Withdraw\n\t4: Transfer to other customer\n\t4: Transfer to other account\n\t5: Quit");
+            System.out.println("\t1: Check balance\n\t2: Deposit\n\t3: Withdraw\n\t4: Transfer to other customer\n\t5: Quit");
             System.out.println("---------------------------------------");
-            System.out.println("Please select what do you like to do from the menu: ");
+            System.out.print("Please select what do you like to do from the menu: ");
 
             selection = scanner.nextInt();
             double amount = 0;

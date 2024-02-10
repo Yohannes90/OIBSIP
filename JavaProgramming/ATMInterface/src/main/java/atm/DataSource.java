@@ -14,7 +14,6 @@ public class DataSource {
 
         try {
             connection = DriverManager.getConnection(dbFile);
-            System.out.println("Connected to Database");
         } catch (SQLException e) {
             System.out.println("Connection to Database Failed");
             e.printStackTrace();
