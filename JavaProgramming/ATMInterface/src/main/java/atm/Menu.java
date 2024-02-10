@@ -72,7 +72,7 @@ public class Menu {
                     double transferAmount = scanner.nextDouble();
                     System.out.print("Are you sure you want to transfer " + transferAmount + " to " + recipientEmail +" Y/N: ");
                     String confirmation = scanner.next();
-                    if (confirmation.equals('t') || confirmation.equals('T')) {
+                    if (confirmation.equals("y") || confirmation.equals("Y")) {
                         try {
                             account.transferToAccount(recipientCustomer.getAccountNo(), transferAmount);
                         } catch (Exception e) {
