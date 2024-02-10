@@ -61,7 +61,7 @@ public class Menu {
                     }
                     break;
                 case 4:
-                    System.out.print("Please enter the account number you want to transfer to: ");
+                    System.out.print("Please enter the account email you want to transfer to: ");
                     String recipientEmail = scanner.next();
                     Customer recipientCustomer = getCustomer(recipientEmail);
                     if (recipientCustomer.equals(null)) {
@@ -75,6 +75,8 @@ public class Menu {
                     if (confirmation.equals("y") || confirmation.equals("Y")) {
                         try {
                             account.transferToAccount(recipientCustomer.getAccountNo(), transferAmount);
+                            System.out.println("You have successfully transferred " + transferAmount + " to " + recipientEmail +
+                                    ". Your current balance is " + account.getBalance());
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
                             System.out.println("Please try again.");

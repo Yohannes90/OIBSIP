@@ -70,14 +70,10 @@ public class Account {
         } else {
             double senderBalance = balance - amount;
             double receiverBalance = getAccount(recipientAccount).getBalance() + amount;
-            System.out.println(" before recipient " + getAccount(recipientAccount).getBalance());
-            System.out.println("before sender " + getBalance());
             setBalance(senderBalance);
             getAccount(recipientAccount).setBalance(receiverBalance);
             updateAccountBalance(id, senderBalance);
             updateAccountBalance(recipientAccount, receiverBalance);
-            System.out.println("recipient " + getAccount(recipientAccount).getBalance());
-            System.out.println("sender " + getBalance());
         }
     }
 }
