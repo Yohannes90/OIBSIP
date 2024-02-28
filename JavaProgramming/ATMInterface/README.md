@@ -17,7 +17,7 @@
 
 ## Built With
 
-- The personal portfolio website is built using
+- This project is built using
     - **Java**
     - **SQLite**
     - **IntelliJ IDEA** as primary IDE,
